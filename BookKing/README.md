@@ -1,8 +1,17 @@
 # BookKing #
 
-TODO Describe the plugin shortly here.
+-is a plugin for the e-learning open source software - Moodle, that allows users to organize meetings by making relevant bookings during a predetermined time frame.
 
-TODO Provide more detailed description here.
+The lecturer will be able to stipulate the length of the meetings over a specified period on any day the lecturer would like. The lecturer can also indicate the reason for having the meetings, for example, consultations, presentations etc. and allow students to be able to give the reason for their meeting so the necessary preparation can be made. The lecturer will be able to set a cut off time for students to be able to make bookings. These scheduled meetings should appear on the lecturer's Moodle timetable as well.
+
+After the lecturer has created the BookKing slots, students will be able to book a time slot where they can meet the lecturer at their convenience as long as the slot they want is still available (no double bookings). When students book their time slots they will also be given the option to state a reason for wanting to meet the lecturer. Students can also cancel their booking or change their booking to a different time slot causing the previously booked time slot to become available.
+
+We will be using the Scrum framework for developing our Software. It will consist of four sprints each having a length of three weeks. In our first sprint we are required to install Moodle, understand its framework, create an empty plugin and be able to do some database manipulation.
+
+Our product owner is Dr. Richard Klein. This plugin is developed by "Team Name:" consisting of the following members:                                                                               Siddeeq Laher                                                                                                                                                                                       Shivaar Sooklal (Scrum Master)                                                                                                                                                            
+Hashmeel Suka                                                                                                                                                                                       Ashley Kasombo                                                                                                                                                                                      Amy Ashley Ah Goo
+
+
 
 ## License ##
 
