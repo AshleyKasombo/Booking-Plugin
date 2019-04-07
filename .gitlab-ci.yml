@@ -10,7 +10,6 @@ image: php:5.6
 #cache:
  # paths:
   #- vendor/
-- phpunit --coverage-text --colors=never
 
 before_script:
 # Install git, the php image doesn't have installed
