@@ -18,10 +18,18 @@ job 1:
     coverage: '/^\s*Lines:\s*\d+.\d+\%/'
     
 job 2: 
-    stage: test
-    script: echo "Testing"
-    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
-    
+    stages:
+  - test
+
+before_script:
+  - pecl install xdebug
+  - docker-php-ext-enable xdebug
+
+app:unit-tests:
+  stage: test
+  script:
+  - php ./unit-tests/phpunit --bootstrap ./unit-tests/autoload.php ./unit-tests/tests --coverage-text --colors=never
+  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
 job 3:
     stage: deploy
     script: echo "Deploying"
