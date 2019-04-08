@@ -1,4 +1,4 @@
-php:7.2
+image: php:7.2
 
 stages:
     - build
