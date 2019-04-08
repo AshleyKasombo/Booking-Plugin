@@ -1,14 +1,28 @@
-image: php:7.2
+php:7.2
 
 stages:
-  - test
+    - build
+    - test
+    - deploy
 
 before_script:
-  - pecl install xdebug
-  - docker-php-ext-enable xdebug
+- bash ci/docker_install.sh > /dev/null
 
-app:unit-tests:
-  stage: test
+test:app:
   script:
-  - php ./unit-tests/phpunit --bootstrap ./unit-tests/autoload.php ./unit-tests/tests --coverage-text --colors=never
-  coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+  - phpunit --configuration phpunit_myapp.xml
+  
+job 1:
+    stage: build
+    script: echo "Building"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    
+job 2: 
+    stage: test
+    script: echo "Testing"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+
+job 3:
+    stage: deploy
+    script: echo "Deploying"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
