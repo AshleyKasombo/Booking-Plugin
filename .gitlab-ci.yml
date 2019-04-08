@@ -1,17 +1,8 @@
-image: php:7.2
-
 stages:
     - build
     - test
     - deploy
 
-before_script:
-- bash ci/docker_install.sh > /dev/null
-
-test:app:
-  script:
-  - phpunit --configuration phpunit_myapp.xml
-  
 job 1:
     stage: build
     script: echo "Building"
