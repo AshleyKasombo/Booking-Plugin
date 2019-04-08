@@ -1,5 +1,9 @@
 image: php:7.2
 
+stages:
+    - build
+    - test
+    - deploy
 
 before_script:
 - bash ci/docker_install.sh > /dev/null
@@ -7,4 +11,20 @@ before_script:
 test:app:
   script:
   - phpunit --configuration phpunit_myapp.xml
+  
+job 1:
+    stage: build
+    script: echo "Building"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    
+job 2: 
+    stage: test
+    script: echo "Testing"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    
+job 3:
+    stage: deploy
+    script: echo "Deploying"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+
   
