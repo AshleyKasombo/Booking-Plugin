@@ -1,5 +1,5 @@
 # Select image from https://hub.docker.com/r/_/php/
-image: php:5.6
+image: php:7.2
 
 before_script:
 # Install dependencies
