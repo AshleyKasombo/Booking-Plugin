@@ -72,3 +72,49 @@ job 3:
     stage: deploy
     script: echo "Deploying"
     coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    
+    
+TAKE 2:
+image: php:7.2
+
+stages:
+    - build
+    - test
+    - deploy
+
+Set up:
+    stage: build
+    script: echo "Building"
+    script: echo "Set up"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    
+Create Student: 
+    stage: test
+    script: echo "Testing"
+    script: echo "Create Student"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    
+Assert Slot Times:
+    stage: test
+    script: echo " Assert Slot Times"
+    script: echo "Building"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    
+Checked Time slot:
+    stage: test
+    script: echo " Check time slot"
+    script: echo "Building"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+
+Test load Slot Timing:
+    stage: test
+    script: echo " Test load slot timing"
+    script: echo "Building"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+
+
+Deploy bookable appointment:
+    stage: deploy
+    script: echo " Test load slot timing"
+    script: echo "Building"
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
