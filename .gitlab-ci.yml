@@ -7,11 +7,9 @@ before_script:
 # Install Xdebug
 - pecl install xdebug
 - docker-php-ext-enable xdebug
-#Composer
-- composer install
 
 test:app:
   script:
   - phpunit --configuration phpunit_myapp.xml
-  - php vendor/bin/phpunit --coverage-text --colors=never 
+  - phpunit --coverage-text phpunit_myapp.xml --colors=never 
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
