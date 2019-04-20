@@ -4,4 +4,7 @@
 
 [![coverage report](https://gitlab.com/team-name-colon/bookking/badges/master/coverage.svg)](https://gitlab.com/team-name-colon/bookking/commits/master)
 
+![coverage](https://gitlab.com/gitlab-org/gitlab-ce/badges/master/coverage.svg?job=coverage)
+
+
 The only Moodle activity plugin you will ever need for booking time slots!
