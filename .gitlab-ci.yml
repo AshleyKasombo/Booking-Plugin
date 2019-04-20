@@ -4,6 +4,9 @@ image: php:7.2
 before_script:
 # Install dependencies
 - bash ci/docker_install.sh > /dev/null
+# Install Xdebug
+- pecl install xdebug
+- docker-php-ext-enable xdebug
 
 test:app:
   script:
