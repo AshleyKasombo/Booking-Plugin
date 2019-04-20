@@ -1,0 +1,6 @@
+<testsuites>
+  <testsuite name="synth-framework">
+    <directory></directory>
+    <file>phpunit_test.php</file>
+  </testsuite>
+</testsuites>
