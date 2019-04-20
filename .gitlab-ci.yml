@@ -1,59 +1,41 @@
-image: php:7.2
+# Select image from https://hub.docker.com/_/php/
+image: php:5.6
 
-stages:
-    - build
-    - test
-    - deploy
+# Select what we should cache
+cache:
+  paths:
+  - vendor/
 
-Set up:
-    stage: build
-    script: echo "Building"
-    script: echo "Set up"
-    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
-    
-Create Student: 
-    stage: test
-    script: echo "Testing"
-    script: echo "Create Student"
-    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
-    
-Assert Slot Times:
-    stage: test
-    script: echo " Assert Slot Times"
-    script: echo "Building"
-    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
-    
-Checked Time slot:
-    stage: test
-    script: echo " Check time slot"
-    script: echo "Building"
-    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+before_script:
+# Install git, the php image doesn't have installed
+- apt-get update -yqq
+- apt-get install git -yqq
 
-Test load Slot Timing:
-    stage: test
-    script: echo " Test load slot timing"
-    script: echo "Building"
-    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+# Install mysql driver
+- docker-php-ext-install pdo_mysql
 
+# Install composer
+- curl -sS https://getcomposer.org/installer | php
 
-Deploy bookable appointment:
-    stage: deploy
-    script: echo " Test load slot timing"
-    script: echo "Building"
-    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
-    
-    
-    
-    
+# Install all project dependencies
+- php composer.phar install
 
-    
-    
-    
+services:
+- mysql
 
-    
-    
-    
-    
-    
-    
-    
+variables:
+  # Configure mysql service (https://hub.docker.com/_/mysql/)
+  MYSQL_DATABASE: hello_world_test
+  MYSQL_ROOT_PASSWORD: mysql
+
+# We test PHP5.6 (the default) with MySQL
+test:mysql:
+  script:
+  - vendor/bin/phpunit --configuration phpunit_mysql.xml --coverage-text
+
+# We test PHP7 with MySQL, but we allow it to fail
+test:php7:mysql:
+  image: php:7
+  script:
+  - vendor/bin/phpunit --configuration phpunit_mysql.xml --coverage-text
+  allow_failure: true
