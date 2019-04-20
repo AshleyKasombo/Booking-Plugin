@@ -8,8 +8,7 @@ before_script:
 - pecl install xdebug
 - docker-php-ext-enable xdebug
 #Composer
-- curl -sS https://getcomposer.org/installer | php
-- php composer.phar install
+- composer install
 
 test:app:
   script:
