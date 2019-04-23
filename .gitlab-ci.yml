@@ -1,10 +1,6 @@
 # Select image from https://hub.docker.com/r/_/php/
 image: php:7.2
 
-cache:
-  paths:
-  - vendor/
-
 before_script:
 # Install dependencies
 - bash ci/docker_install.sh > /dev/null
@@ -20,6 +16,6 @@ before_script:
 
 test:app:
   script:
-  - php vendor/bin/phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
+  - php phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
   - phpunit --version
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
