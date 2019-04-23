@@ -1,12 +1,15 @@
-<testsuites>
-  <testsuite name="synth-framework">
-    <directory></directory>
-    <file>phpunit_test.php</file>
-  </testsuite>
-</testsuites>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<filter>
-  <whitelist processUncoveredFilesFromWhitelist="true">
-    <directory suffix=".php">./</directory>
-  </whitelist>
-</filter>
+<phpunit colors="true" strict="true">
+     <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./</directory>
+        </whitelist>
+    </filter>
+    <testsuites>
+        <testsuite name="BookKing-Testing">
+            <directory></directory>
+            <file>phpunit_test.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>
