@@ -8,14 +8,8 @@ before_script:
 - pecl install xdebug
 - docker-php-ext-enable xdebug
 
-# Install composer
-- curl -sS https://getcomposer.org/installer | php
-# Install all project dependencies
-- php composer.phar install
-
-
 test:app:
   script:
-  - php phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
+  - phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
   - phpunit --version
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
