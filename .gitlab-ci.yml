@@ -11,5 +11,8 @@ before_script:
 test:app:
   script:
   - phpunit --configuration phpunit_myapp.xml
-  - php ./tests --coverage-text --colors=never
+#  - php ./tests --coverage-text --colors=never
+  - phpunit --dump-xdebug-filter ./xdebug-filter.php
+  - phpunit --prepend ./xdebug-filter.php --coverage-html build/coverage-report
+
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
