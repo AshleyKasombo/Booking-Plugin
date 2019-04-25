@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 class StackTest extends TestCase
 {
-    public function assert_record_count(){
+    public function testRecordCount(){
         $stack = [];
         $this->assertSame(0, count($stack));
 
