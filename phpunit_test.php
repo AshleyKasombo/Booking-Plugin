@@ -4,14 +4,6 @@ use PHPUnit\Framework\TestCase;
 class StackTest extends TestCase
 {
     public function assert_record_count(){
-        $arr = [];
-
-        array_push($arr, 'Bob');
-        array_push($arr, 'Andy');
-        $this->assertSame('Bob', $arr[0]);
-    }
-    
-    public function testPushAndPop(){
         $stack = [];
         $this->assertSame(0, count($stack));
 
@@ -21,6 +13,14 @@ class StackTest extends TestCase
 
         $this->assertSame('foo', array_pop($stack));
         $this->assertSame(0, count($stack));
+    }
+    
+    public function testPushAndPop(){
+        $arr = [];
+
+        array_push($arr, 'Bob');
+        array_push($arr, 'Andy');
+        $this->assertSame('Bob', $arr[0]);
     }
     
     
