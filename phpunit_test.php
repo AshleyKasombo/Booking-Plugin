@@ -16,10 +16,11 @@ class StackTest extends TestCase
         $this->assertSame(0, count($stack));
     }
     
-    private function assert_record_count($table, $field, $value, $expect) {
-        global $DB;
+    private function assert_record_count() {
+        $arr = [];
 
-        $act = $DB->count_records($table, array($field => $value));
-        $this->assertEquals($expect, $act, "Checking whether table $table has $expect records with $field equal to $value");
+        array_push($arr, 'Bob');
+        array_push($arr, 'Andy');
+        $this->assertSame('Bob', $arr[1]);
     }
 }
