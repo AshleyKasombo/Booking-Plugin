@@ -23,11 +23,4 @@ class StackTest extends TestCase
         $this->assertSame('Bob', $arr[0]);
     }
     
-    public function testDb($table, $field, $value, $expect) {
-        global $DB;
-
-        $act = $DB->count_records($table, array($field => $value));
-        $this->assertEquals($expect, $act, "Checking whether table $table has $expect records with $field equal to $value");
-    }
-    
 }
