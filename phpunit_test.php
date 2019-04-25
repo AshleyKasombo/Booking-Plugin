@@ -16,11 +16,11 @@ class StackTest extends TestCase
         $this->assertSame(0, count($stack));
     }
     
-    private function assert_record_count() {
+    public function assert_record_count() {
         $arr = [];
 
         array_push($arr, 'Bob');
         array_push($arr, 'Andy');
-        $this->assertSame('Bob', $arr[1]);
+        $this->assertSame('Bob', $arr[0]);
     }
 }
