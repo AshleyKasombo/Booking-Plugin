@@ -1,8 +1,5 @@
 # Select image from https://hub.docker.com/r/_/php/
 image: php:7.2
-
-services:
-    - mysql:5.5
     
 variables:
     MYSQL_DATABASE: hello_world_test
@@ -16,6 +13,9 @@ before_script:
     - pecl install xdebug
     - docker-php-ext-enable xdebug
     - apt-get install php-mysql
+    - docker-php-ext-install mysqli
+    - docker-php-ext-enable mysqli
+    - apachectl restart
     #MySQL stuff
     #- mysql -e 'CREATE DATABASE test;'
     #- mysql -u root --password='hello' test < ./test_dump.sql
