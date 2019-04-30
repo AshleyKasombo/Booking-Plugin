@@ -14,10 +14,22 @@ class BookKingTest extends TestCase
     }
   
     public function testDescription(){
-        $db=$this->getConnection();
-        $stmt = $db->prepare("SELECT DESCRIPTION FROM TEST WHERE ID=1");
-        $stmt->execute();
-        $expected = $stmt->fetchObject();
+        $username = "root";
+        $password = "mysql";
+        $database = "hello_world_test";
+        $link = mysqli_connect("mysql", $username, $password, $database);
+        $expected="";
+        /* Select queries return a resultset */
+        if ($result = mysqli_query($link, "SELECT DESCRIPTION FROM TEST WHERE ID=1")) {
+            $row=$result->fetch_assoc();
+            $output=$expected;
+        }
+        mysqli_close($link);
+
+        #$db=$this->getConnection();
+        #$stmt = $db->prepare("SELECT DESCRIPTION FROM TEST WHERE ID=1");
+        #$stmt->execute();
+        #$expected = $stmt->fetchObject();
         $this->assertSame('Testing', $expected);
     }
   
