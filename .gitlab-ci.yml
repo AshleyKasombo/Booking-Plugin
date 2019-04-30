@@ -1,15 +1,22 @@
 # Select image from https://hub.docker.com/r/_/php/
 image: php:7.2
 
+services:
+    - mysql:latest
+
 before_script:
-# Install dependencies
-- bash ci/docker_install.sh > /dev/null
-# Install Xdebug
-- pecl install xdebug
-- docker-php-ext-enable xdebug
+    # Install dependencies
+    - bash ci/docker_install.sh > /dev/null
+    # Install Xdebug
+    - pecl install xdebug
+    - docker-php-ext-enable xdebug
+    #MySQL stuff
+    - mysql -e 'CREATE DATABASE test;'
+    - mysql -u root --password='' test < ./test_dump.sql
+    - mysql -e 'USE test; SELECT * FROM TEST;'
 
 test:app:
   script:
-  - phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
-  - phpunit --version
+    - phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
+    - phpunit --version
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
