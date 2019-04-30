@@ -10,13 +10,13 @@ variables:
 
 
 before_script:
-    - apt-get install php5-mysql
     # Install dependencies
     - bash ci/docker_install.sh > /dev/null
     # Install Xdebug
     - pecl install xdebug
     - docker-php-ext-enable xdebug
     #MySQL stuff
+    - apt-get install php5-mysql
     #- mysql -e 'CREATE DATABASE test;'
     #- mysql -u root --password='hello' test < ./test_dump.sql
     #- mysql -e 'USE test; SELECT * FROM TEST;'
