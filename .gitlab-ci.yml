@@ -3,6 +3,10 @@ image: php:7.2
 
 services:
     - mysql:latest
+    
+variables:
+    MYSQL_DATABASE: test
+    MYSQL_ROOT_PASSWORD: hello
 
 before_script:
     # Install dependencies
@@ -11,8 +15,8 @@ before_script:
     - pecl install xdebug
     - docker-php-ext-enable xdebug
     #MySQL stuff
-    - mysql -e 'CREATE DATABASE test;'
-    - mysql -u root --password='' test < ./test_dump.sql
+    #- mysql -e 'CREATE DATABASE test;'
+    - mysql -u root --password='hello' test < ./test_dump.sql
     - mysql -e 'USE test; SELECT * FROM TEST;'
 
 test:app:
