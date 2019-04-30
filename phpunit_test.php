@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use PHPUnit\DbUnit\TestCaseTrait
+use PHPUnit\DbUnit\TestCaseTrait;
 
 class BookKingTest extends TestCase
 {
