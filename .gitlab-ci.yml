@@ -3,6 +3,11 @@ image: php:7.2
 
 services:
     - mysql:5.5
+    
+variables:
+    MYSQL_DATABASE: hello_world_test
+    MYSQL_ROOT_PASSWORD: mysql
+
 
 before_script:
     # Install dependencies
@@ -15,19 +20,20 @@ before_script:
     #- mysql -u root --password='hello' test < ./test_dump.sql
     #- mysql -e 'USE test; SELECT * FROM TEST;'
     
+mysql_build:
+    variables:
+        MYSQL_DATABASE: hello_world_test
+        MYSQL_ROOT_PASSWORD: mysql
+    services:
+        - mysql
+    image: mysql
+    before_script:
+        - mysql --version
+    script:
+        - echo "SELECT 'OK';" | mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --host=mysql "${MYSQL_DATABASE}"
+        - mysql -u root --password='mysql' --host=mysql hello_world_test < ./test_dump.sql
+            
 test:app:
-    mysql_build:
-        variables:
-            MYSQL_DATABASE: hello_world_test
-            MYSQL_ROOT_PASSWORD: mysql
-        services:
-            - mysql
-        image: mysql
-        before_script:
-            - mysql --version
-        script:
-            - echo "SELECT 'OK';" | mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --host=mysql "${MYSQL_DATABASE}"
-            - mysql -u root --password='mysql' --host=mysql hello_world_test < ./test_dump.sql
-            - phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
-            - phpunit --version
-        coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    - phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
+    - phpunit --version
+    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
