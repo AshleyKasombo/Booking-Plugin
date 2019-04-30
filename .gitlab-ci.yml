@@ -16,7 +16,6 @@ before_script:
     - pecl install xdebug
     - docker-php-ext-enable xdebug
     - apt-get install php-mysql
-    - 
     #MySQL stuff
     #- mysql -e 'CREATE DATABASE test;'
     #- mysql -u root --password='hello' test < ./test_dump.sql
