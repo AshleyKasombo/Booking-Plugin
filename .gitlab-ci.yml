@@ -10,6 +10,7 @@ variables:
 
 
 before_script:
+    - apt-get install php5-mysql
     # Install dependencies
     - bash ci/docker_install.sh > /dev/null
     # Install Xdebug
