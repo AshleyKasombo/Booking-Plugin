@@ -1,8 +1,26 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class StackTest extends TestCase
+class BookKingTest extends TestCase
 {
+    
+    public function getConnection(){
+        $mysql_host = getenv('MYSQL_HOST') ?: 'mysql';
+        $mysql_user = getenv('MYSQL_USER') ?: 'root';
+        $mysql_password = getenv('MYSQL_PASSWORD') ?: 'mysql';
+        $connection_string = "mysql:host={$mysql_host};dbname=hello_world_test";
+        $db = new PDO($connection_string, $mysql_user, $mysql_password);
+        return $db;
+    }
+  
+    public function testDescription(){
+        $db=$this->getConnection();
+        $stmt = $db->prepare("SELECT DESCRIPTION FROM TEST WHERE ID=1");
+        $stmt->execute();
+        $expected = $stmt->fetchObject();
+        $this->assertSame('Testing', $expected);
+    }
+  
     public function testRecordCount(){
         $stack = [];
         $this->assertSame(0, count($stack));
