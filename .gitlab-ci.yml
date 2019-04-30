@@ -14,7 +14,6 @@ before_script:
     - docker-php-ext-enable xdebug
     - docker-php-ext-install mysqli
     - docker-php-ext-enable mysqli
-    - apachectl restart
     #MySQL stuff
     #- mysql -e 'CREATE DATABASE test;'
     #- mysql -u root --password='hello' test < ./test_dump.sql
