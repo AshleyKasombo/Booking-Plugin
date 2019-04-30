@@ -12,7 +12,6 @@ before_script:
     # Install Xdebug
     - pecl install xdebug
     - docker-php-ext-enable xdebug
-    - apt-get install php-mysql
     - docker-php-ext-install mysqli
     - docker-php-ext-enable mysqli
     - apachectl restart
