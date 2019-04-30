@@ -2,7 +2,7 @@
 image: php:7.2
 
 services:
-    - mysql:latest
+    - mysql:5.5
     
 variables:
     MYSQL_DATABASE: test
@@ -15,8 +15,8 @@ before_script:
     - pecl install xdebug
     - docker-php-ext-enable xdebug
     #MySQL stuff
-    - install mysql-server
-    - install mysql-client
+    - apt-get install mysql-server
+    - apt-get install mysql-client
     #- mysql -e 'CREATE DATABASE test;'
     - mysql -u root --password='hello' test < ./test_dump.sql
     - mysql -e 'USE test; SELECT * FROM TEST;'
