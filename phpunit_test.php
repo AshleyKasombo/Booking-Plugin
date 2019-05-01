@@ -5,25 +5,26 @@ use PHPUnit\DbUnit\TestCaseTrait;
 class BookKingTest extends TestCase
 {
   
-    $readjson = file_get_contents('data.json');
+    public function getArrays(){
+        $readjson = file_get_contents('data.json');
 
-    $data = json_decode($readjson, true);
+        $data = json_decode($readjson, true);
 
-    $idArray = array();
-    $descArray = array();
+        $idArray = array();
+        $descArray = array();
 
-    foreach($data as $entry){
-        $desc = $entry['DESCRIPTION'];
-        $id = $entry['ID'];
-        array_push($idArray, $id);
-        array_push($descArray, $desc);
-    }
-
-    public function testID(){
-        $this->assertSame(1, $idArray[0]);
+        foreach($data as $entry){
+            $desc = $entry['DESCRIPTION'];
+            $id = $entry['ID'];
+            array_push($idArray, $id);
+            array_push($descArray, $desc);
+        }
+        
+        return $descArray;
     }
     
     public function testDescription(){
+        $descArray = $this->getArrays();
         $this->assertSame("Testing", $descArray[0]);
     }
   
