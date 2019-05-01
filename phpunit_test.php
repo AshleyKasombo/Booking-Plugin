@@ -5,6 +5,28 @@ use PHPUnit\DbUnit\TestCaseTrait;
 class BookKingTest extends TestCase
 {
   
+    $readjson = file_get_contents('data.json');
+
+    $data = json_decode($readjson, true);
+
+    $idArray = array();
+    $descArray = array();
+
+    foreach($data as $entry){
+        $desc = $entry['DESCRIPTION'];
+        $id = $entry['ID'];
+        array_push($idArray, $id);
+        array_push($descArray, $desc);
+    }
+
+    public function testID(){
+        $this->assertSame(1, $idArray[0]);
+    }
+    
+    public function testDescription(){
+        $this->assertSame("Testing", $descArray[0]);
+    }
+  
     public function testRecordCount(){
         $stack = [];
         $this->assertSame(0, count($stack));
