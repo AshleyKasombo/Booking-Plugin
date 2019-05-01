@@ -37,8 +37,8 @@ class BookKingTest extends TestCase
     
     public function testID(){
         $idArray = $this->getIDArray();
-        $this->assertSame(1, $idArray[0]);
-        $this->assertSame(2, $idArray[1]);
+        $this->assertSame('1', $idArray[0]);
+        $this->assertSame('2', $idArray[1]);
     }
     
     public function testDescription(){
