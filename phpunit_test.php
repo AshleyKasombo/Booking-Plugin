@@ -35,6 +35,21 @@ class BookKingTest extends TestCase
         return $descArray;
     }
     
+    public function getCourseArray(){
+        $readjson = file_get_contents('mdl_bookking.json');
+
+        $data = json_decode($readjson, true);
+
+        $courseArray = array();
+
+        foreach($data as $entry){
+            $course = $entry['course'];
+            array_push($courseArray, $desc);
+        }
+        
+        return $courseArray;
+    }
+    
     public function testID(){
         $idArray = $this->getIDArray();
         $this->assertSame('1', $idArray[0]);
@@ -45,6 +60,11 @@ class BookKingTest extends TestCase
         $descArray = $this->getDescArray();
         $this->assertSame("Testing", $descArray[0]);
         $this->assertSame("Testing2", $descArray[1]);
+    }
+  
+    public function testDescription(){
+        $courseArray = $this->getCourseArray();
+        $this->assertSame("2", $courseArray[0]);
     }
   
     public function testRecordCount(){
