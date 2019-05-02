@@ -44,7 +44,7 @@ class BookKingTest extends TestCase
 
         foreach($data as $entry){
             $course = $entry['course'];
-            array_push($courseArray, $desc);
+            array_push($courseArray, $course);
         }
         
         return $courseArray;
