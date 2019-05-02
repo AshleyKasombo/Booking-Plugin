@@ -62,7 +62,7 @@ class BookKingTest extends TestCase
         $this->assertSame("Testing2", $descArray[1]);
     }
   
-    public function testDescription(){
+    public function testCourse(){
         $courseArray = $this->getCourseArray();
         $this->assertSame("2", $courseArray[0]);
     }
