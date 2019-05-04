@@ -50,6 +50,36 @@ class BookKingTest extends TestCase
         return $courseArray;
     }
     
+    public function getCreatedArray(){
+        $readjson = file_get_contents('appointments.json');
+
+        $data = json_decode($readjson, true);
+
+        $createdArray = array();
+
+        foreach($data as $entry){
+            $time = $entry['timecreated'];
+            array_push($createdArray, $time);
+        }
+        
+        return $createdArray;
+    }
+    
+    public function getDurationArray(){
+        $readjson = file_get_contents('slots.json');
+
+        $data = json_decode($readjson, true);
+
+        $durationArray = array();
+
+        foreach($data as $entry){
+            $duration = $entry['timecreated'];
+            array_push($durationArray, $duration);
+        }
+        
+        return $durationArray;
+    }
+    
     public function testID(){
         $idArray = $this->getIDArray();
         $this->assertSame('1', $idArray[0]);
@@ -67,6 +97,16 @@ class BookKingTest extends TestCase
         $this->assertSame("2", $courseArray[0]);
     }
   
+    public function testTime(){
+        $createdArray = $this->getCreatedArray();
+        $this->assertSame("1556980898", $createdArray[0]);
+    }
+    
+    public function testDuration(){
+        $durationArray = $this->getDurationArray();
+        $this->assertSame("15", $durationArray[0]);
+    }
+    
     public function testRecordCount(){
         $stack = [];
         $this->assertSame(0, count($stack));
