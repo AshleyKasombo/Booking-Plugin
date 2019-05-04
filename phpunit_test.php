@@ -73,7 +73,7 @@ class BookKingTest extends TestCase
         $durationArray = array();
 
         foreach($data as $entry){
-            $duration = $entry['timecreated'];
+            $duration = $entry['duration'];
             array_push($durationArray, $duration);
         }
         
