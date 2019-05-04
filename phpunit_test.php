@@ -51,7 +51,7 @@ class BookKingTest extends TestCase
     }
     
     public function getCreatedArray(){
-        $readjson = file_get_contents('appointments.json');
+        $readjson = file_get_contents('mdl_bookking_appointment.json');
 
         $data = json_decode($readjson, true);
 
@@ -66,7 +66,7 @@ class BookKingTest extends TestCase
     }
     
     public function getDurationArray(){
-        $readjson = file_get_contents('slots.json');
+        $readjson = file_get_contents('mdl_bookking_slots.json');
 
         $data = json_decode($readjson, true);
 
