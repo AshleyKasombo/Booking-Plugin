@@ -1,10 +1,5 @@
 # Select image from https://hub.docker.com/r/_/php/
 image: php:7.2
-    
-variables:
-    MYSQL_DATABASE: hello_world_test
-    MYSQL_ROOT_PASSWORD: mysql
-
 
 before_script:
     # Install dependencies
@@ -14,15 +9,11 @@ before_script:
     - docker-php-ext-enable xdebug
     - docker-php-ext-install mysqli
     - docker-php-ext-enable mysqli
-    #MySQL stuff
-    #- mysql -e 'CREATE DATABASE test;'
-    #- mysql -u root --password='hello' test < ./test_dump.sql
-    #- mysql -e 'USE test; SELECT * FROM TEST;'
     
 mysql_build:
     variables:
-        MYSQL_DATABASE: hello_world_test
-        MYSQL_ROOT_PASSWORD: mysql
+        MYSQL_DATABASE: MOODLE
+        MYSQL_ROOT_PASSWORD: mdl
     services:
         - mysql
     image: mysql
@@ -30,7 +21,7 @@ mysql_build:
         - mysql --version
     script:
         - echo "SELECT 'OK';" | mysql --user=root --password="${MYSQL_ROOT_PASSWORD}" --host=mysql "${MYSQL_DATABASE}"
-        - mysql -u root --password='mysql' --host=mysql hello_world_test < ./test_dump.sql
+        - mysql -u root --password='mdl' --host=mysql MOODLE < ./MOODLE_dump.sql
             
 test:app:
     script:
