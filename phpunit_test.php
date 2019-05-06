@@ -82,12 +82,24 @@ class BookKingTest extends TestCase
     
     public function testID(){
         $idArray = $this->getIDArray();
+        if ($var1 == $var2){
+            echo 'not equal';
+        }
+        else if ($var2 == $var1){
+            echo 'still not equal';
+        }
         $this->assertSame('1', $idArray[0]);
         $this->assertSame('2', $idArray[1]);
     }
     
     public function testDescription(){
         $descArray = $this->getDescArray();
+        if ($var1 == $var2){
+            echo 'not equal';
+        }
+        else if ($var2 == $var1){
+            echo 'still not equal';
+        }
         $this->assertSame("Testing", $descArray[0]);
         $this->assertSame("Testing2", $descArray[1]);
     }
@@ -108,6 +120,9 @@ class BookKingTest extends TestCase
         $var2 = 2;
         if ($var1 == $var2){
             echo 'not equal';
+        }
+        else if ($var2 == $var1){
+            echo 'still not equal';
         }
         $this->assertSame("15", $durationArray[0]);
     }
