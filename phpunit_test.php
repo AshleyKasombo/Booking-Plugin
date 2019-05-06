@@ -104,6 +104,11 @@ class BookKingTest extends TestCase
     
     public function testDuration(){
         $durationArray = $this->getDurationArray();
+        $var1 = 1;
+        $var2 = 2;
+        if ($var1 == $var2){
+            echo 'not equal';
+        }
         $this->assertSame("15", $durationArray[0]);
     }
     
