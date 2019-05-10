@@ -373,7 +373,7 @@ class slotsTest extends TestCase{
         return $hideArray;
     }
     
-    public function testStart(){
+    public function testHide(){
         $hideArray = $this->getHideArray();
         $this->assertSame("1556980826", $hideArray[0]);
     }
