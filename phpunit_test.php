@@ -283,7 +283,7 @@ class appointmentTest extends TestCase{
         $studentArray = array();
 
         foreach($data as $entry){
-            $student = $entry['slotid'];
+            $student = $entry['studentid'];
             array_push($studentArray, $student);
         }
         
@@ -327,7 +327,7 @@ class slotsTest extends TestCase{
 
         foreach($data as $entry){
             $start = $entry['starttime'];
-            array_push($durationArray, $start);
+            array_push($startArray, $start);
         }
         
         return $startArray;
