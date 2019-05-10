@@ -213,7 +213,7 @@ class BookKingDbTest extends TestCase{
     
 }
 
-class appointmentDbTest extends TestCase{
+class appointmentTest extends TestCase{
     
     public function getCreatedArray(){
         $readjson = file_get_contents('mdl_bookking_appointment.json');
@@ -230,13 +230,113 @@ class appointmentDbTest extends TestCase{
         return $createdArray;
     }
     
-    public function testTime(){
+    public function testCreated(){
         $createdArray = $this->getCreatedArray();
         $this->assertSame("1556980898", $createdArray[0]);
     }
+    
+    public function getAttendedArray(){
+        $readjson = file_get_contents('mdl_bookking_appointment.json');
+
+        $data = json_decode($readjson, true);
+
+        $attendedArray = array();
+
+        foreach($data as $entry){
+            $att = $entry['attended'];
+            array_push($attendedArray, $att);
+        }
+        
+        return $attendedArray;
+    }
+    
+    public function testAttended(){
+        $attendedArray = $this->getAttendedArray();
+        $this->assertSame("0", $attendedArray[0]);
+    }
+    
+    public function getIDArray(){
+        $readjson = file_get_contents('mdl_bookking_appointment.json');
+
+        $data = json_decode($readjson, true);
+
+        $idArray = array();
+
+        foreach($data as $entry){
+            $id = $entry['slotid'];
+            array_push($idArray, $id);
+        }
+        
+        return $idArray;
+    }
+    
+    public function testID(){
+        $idArray = $this->getIDArray();
+        $this->assertSame("4", $idArray[0]);
+    }
+    
+    public function getStudentArray(){
+        $readjson = file_get_contents('mdl_bookking_appointment.json');
+
+        $data = json_decode($readjson, true);
+
+        $studentArray = array();
+
+        foreach($data as $entry){
+            $student = $entry['slotid'];
+            array_push($studentArray, $student);
+        }
+        
+        return $studentArray;
+    }
+    
+    public function testStudent(){
+        $studentArray = $this->getStudentArray();
+        $this->assertSame("2", $studentArray[0]);
+    }
+    
+    public function getModifiedArray(){
+        $readjson = file_get_contents('mdl_bookking_appointment.json');
+
+        $data = json_decode($readjson, true);
+
+        $modifiedArray = array();
+
+        foreach($data as $entry){
+            $modified = $entry['timemodified'];
+            array_push($modifiedArray, $modified);
+        }
+        
+        return $modifiedArray;
+    }
+    
+    public function testModified(){
+        $modifiedArray = $this->getModifiedArray();
+        $this->assertSame("1556980898", $modifiedArray[0]);
+    }
 }
 
-class slotsDbTest extends TestCase{
+class slotsTest extends TestCase{
+    
+    public function getStartArray(){
+        $readjson = file_get_contents('mdl_bookking_slots.json');
+
+        $data = json_decode($readjson, true);
+
+        $startArray = array();
+
+        foreach($data as $entry){
+            $start = $entry['starttime'];
+            array_push($durationArray, $start);
+        }
+        
+        return $startArray;
+    }
+    
+    public function testStart(){
+        $startArray = $this->getStartArray();
+        $this->assertSame("1557219600", $startArray[0]);
+    }
     
     public function getDurationArray(){
         $readjson = file_get_contents('mdl_bookking_slots.json');
@@ -256,5 +356,25 @@ class slotsDbTest extends TestCase{
     public function testDuration(){
         $durationArray = $this->getDurationArray();
         $this->assertSame("15", $durationArray[0]);
+    }
+    
+    public function getHideArray(){
+        $readjson = file_get_contents('mdl_bookking_slots.json');
+
+        $data = json_decode($readjson, true);
+
+        $hideArray = array();
+
+        foreach($data as $entry){
+            $hide = $entry['hideuntil'];
+            array_push($hideArray, $hide);
+        }
+        
+        return $hideArray;
+    }
+    
+    public function testStart(){
+        $hideArray = $this->getHideArray();
+        $this->assertSame("1556980826", $hideArray[0]);
     }
 }
