@@ -35,96 +35,16 @@ class BookKingTest extends TestCase
         return $descArray;
     }
     
-    public function getCourseArray(){
-        $readjson = file_get_contents('mdl_bookking.json');
-
-        $data = json_decode($readjson, true);
-
-        $courseArray = array();
-
-        foreach($data as $entry){
-            $course = $entry['course'];
-            array_push($courseArray, $course);
-        }
-        
-        return $courseArray;
-    }
-    
-    public function getCreatedArray(){
-        $readjson = file_get_contents('mdl_bookking_appointment.json');
-
-        $data = json_decode($readjson, true);
-
-        $createdArray = array();
-
-        foreach($data as $entry){
-            $time = $entry['timecreated'];
-            array_push($createdArray, $time);
-        }
-        
-        return $createdArray;
-    }
-    
-    public function getDurationArray(){
-        $readjson = file_get_contents('mdl_bookking_slots.json');
-
-        $data = json_decode($readjson, true);
-
-        $durationArray = array();
-
-        foreach($data as $entry){
-            $duration = $entry['duration'];
-            array_push($durationArray, $duration);
-        }
-        
-        return $durationArray;
-    }
-    
     public function testID(){
         $idArray = $this->getIDArray();
-        if ($var1 == $var2){
-            echo 'not equal';
-        }
-        else if ($var2 == $var1){
-            echo 'still not equal';
-        }
         $this->assertSame('1', $idArray[0]);
         $this->assertSame('2', $idArray[1]);
     }
     
     public function testDescription(){
         $descArray = $this->getDescArray();
-        if ($var1 == $var2){
-            echo 'not equal';
-        }
-        else if ($var2 == $var1){
-            echo 'still not equal';
-        }
         $this->assertSame("Testing", $descArray[0]);
         $this->assertSame("Testing2", $descArray[1]);
-    }
-  
-    public function testCourse(){
-        $courseArray = $this->getCourseArray();
-        $this->assertSame("2", $courseArray[0]);
-    }
-  
-    public function testTime(){
-        $createdArray = $this->getCreatedArray();
-        $this->assertSame("1556980898", $createdArray[0]);
-    }
-    
-    public function testDuration(){
-        $durationArray = $this->getDurationArray();
-        $var1 = 1;
-        $var2 = 2;
-        if ($var1 == $var2){
-            echo 'not equal';
-        }
-        else if ($var2 == $var1){
-            echo 'still not equal';
-        }
-        $this->assertSame("15", $durationArray[0]);
     }
     
     public function testRecordCount(){
@@ -147,4 +67,74 @@ class BookKingTest extends TestCase
         $this->assertSame('Bob', $arr[0]);
     }
     
+}
+
+class BookKingDbTest extends TestCase{
+    
+    public function getCourseArray(){
+        $readjson = file_get_contents('mdl_bookking.json');
+
+        $data = json_decode($readjson, true);
+
+        $courseArray = array();
+
+        foreach($data as $entry){
+            $course = $entry['course'];
+            array_push($courseArray, $course);
+        }
+        
+        return $courseArray;
+    }
+    
+    public function testCourse(){
+        $courseArray = $this->getCourseArray();
+        $this->assertSame("2", $courseArray[0]);
+    }
+    
+}
+
+class appointmentDbTest extends TestCase{
+    
+    public function getCreatedArray(){
+        $readjson = file_get_contents('mdl_bookking_appointment.json');
+
+        $data = json_decode($readjson, true);
+
+        $createdArray = array();
+
+        foreach($data as $entry){
+            $time = $entry['timecreated'];
+            array_push($createdArray, $time);
+        }
+        
+        return $createdArray;
+    }
+    
+    public function testTime(){
+        $createdArray = $this->getCreatedArray();
+        $this->assertSame("1556980898", $createdArray[0]);
+    }
+}
+
+class slotsDbTest extends TestCase{
+    
+    public function getDurationArray(){
+        $readjson = file_get_contents('mdl_bookking_slots.json');
+
+        $data = json_decode($readjson, true);
+
+        $durationArray = array();
+
+        foreach($data as $entry){
+            $duration = $entry['duration'];
+            array_push($durationArray, $duration);
+        }
+        
+        return $durationArray;
+    }
+    
+    public function testDuration(){
+        $durationArray = $this->getDurationArray();
+        $this->assertSame("15", $durationArray[0]);
+    }
 }
