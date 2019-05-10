@@ -180,7 +180,7 @@ class BookKingDbTest extends TestCase{
 
         foreach($data as $entry){
             $guard = $entry['guardtime'];
-            array_push(guardArray, $guard);
+            array_push($guardArray, $guard);
         }
         
         return $guardArray;
