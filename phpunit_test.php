@@ -91,6 +91,126 @@ class BookKingDbTest extends TestCase{
         $this->assertSame("2", $courseArray[0]);
     }
     
+    public function getNameArray(){
+        $readjson = file_get_contents('mdl_bookking.json');
+
+        $data = json_decode($readjson, true);
+
+        $nameArray = array();
+
+        foreach($data as $entry){
+            $name = $entry['name'];
+            array_push($nameArray, $name);
+        }
+        
+        return $nameArray;
+    }
+    
+    public function testName(){
+        $nameArray = $this->getNameArray();
+        $this->assertSame("This should work now", $nameArray[0]);
+    }
+    
+    public function getIntroArray(){
+        $readjson = file_get_contents('mdl_bookking.json');
+
+        $data = json_decode($readjson, true);
+
+        $introArray = array();
+
+        foreach($data as $entry){
+            $intro = $entry['intro'];
+            array_push($introArray, $intro);
+        }
+        
+        return $introArray;
+    }
+    
+    public function testIntro(){
+        $introArray = $this->getIntroArray();
+        $this->assertSame("This is definitely gonna work", $introArray[0]);
+    }
+    
+    public function getModeArray(){
+        $readjson = file_get_contents('mdl_bookking.json');
+
+        $data = json_decode($readjson, true);
+
+        $modeArray = array();
+
+        foreach($data as $entry){
+            $mode = $entry['bookkingmode'];
+            array_push($modeArray, $mode);
+        }
+        
+        return $modeArray;
+    }
+    
+    public function testMode(){
+        $modeArray = $this->getModeArray();
+        $this->assertSame("onetime", $modeArray[0]);
+    }
+    
+    public function getMaxArray(){
+        $readjson = file_get_contents('mdl_bookking.json');
+
+        $data = json_decode($readjson, true);
+
+        $maxArray = array();
+
+        foreach($data as $entry){
+            $max = $entry['maxbookings'];
+            array_push($maxArray, $max);
+        }
+        
+        return $maxArray;
+    }
+    
+    public function testMax(){
+        $maxArray = $this->getMaxArray();
+        $this->assertSame("2", $maxArray[0]);
+    }
+    
+    public function getGuardArray(){
+        $readjson = file_get_contents('mdl_bookking.json');
+
+        $data = json_decode($readjson, true);
+
+        $guardArray = array();
+
+        foreach($data as $entry){
+            $guard = $entry['guardtime'];
+            array_push(guardArray, $guard);
+        }
+        
+        return $guardArray;
+    }
+    
+    public function testGuard(){
+        $guardArray = $this->getGuardArray();
+        $this->assertSame("600", $guardArray[0]);
+    }
+    
+    public function getSDArray(){
+        $readjson = file_get_contents('mdl_bookking.json');
+
+        $data = json_decode($readjson, true);
+
+        $sdArray = array();
+
+        foreach($data as $entry){
+            $sd = $entry['defaultslotduration'];
+            array_push($sdArray, $sd);
+        }
+        
+        return $sdArray;
+    }
+    
+    public function testSD(){
+        $sdArray = $this->getSDArray();
+        $this->assertSame("30", $sdArray[0]);
+    }
+    
 }
 
 class appointmentDbTest extends TestCase{
