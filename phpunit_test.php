@@ -5,14 +5,14 @@ use PHPUnit\DbUnit\TestCaseTrait;
 class BookKingTest extends TestCase
 {
     
-  public function getConnection(){
+ ''' public function getConnection(){
     $mysql_host = getenv('MYSQL_HOST') ?: 'localhost';
     $mysql_user = getenv('MYSQL_USER') ?: 'root';
     $mysql_password = getenv('MYSQL_PASSWORD') ?: '';
     $connection_string = "mysql:host={$mysql_host};dbname=moodle";
     $db = new PDO($connection_string, $mysql_user, $mysql_password);
     return $db;
-  }
+  }'''
   
   public function getIDArray(){
         $readjson = file_get_contents('data.json');
