@@ -1,0 +1,7 @@
+{
+    "moodle-mod_bookking-saveseen": {
+        "requires": [
+            "base", "node", "event"
+        ]
+    }
+}
