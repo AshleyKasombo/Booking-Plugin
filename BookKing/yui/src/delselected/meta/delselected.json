@@ -1,0 +1,7 @@
+{
+    "moodle-mod_bookking-delselected": {
+        "requires": [
+            "base", "node", "event"
+        ]
+    }
+}
