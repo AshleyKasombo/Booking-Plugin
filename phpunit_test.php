@@ -20,21 +20,6 @@ class BookKingTest extends TestCase
         return $idArray;
     }
     
-     public function getDecArray(){
-        $readjson = file_get_contents('data.json');
-
-        $data = json_decode($readjson, true);
-
-        $descArray = array();
-
-        foreach($data as $entry){
-            $desc = $entry['DESCRIPTION'];
-            array_push($descArray, $desc);
-        }
-        
-        return $descArray;
-    }
-    
     public function getDescArray(){
         $readjson = file_get_contents('data.json');
 
