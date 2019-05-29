@@ -1,0 +1,10 @@
+{
+    "name": "moodle-mod_bookking-studentlist",
+    "builds": {
+        "moodle-mod_bookking-studentlist": {
+            "jsfiles": [
+                "studentlist.js"
+            ]
+        }
+    }
+}
