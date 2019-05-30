@@ -48,6 +48,10 @@ class BookKingTest extends TestCase
         $idArray = $this->getIDArray();
         $this->assertSame('1', $idArray[0]);
         $this->assertSame('2', $idArray[1]);
+        
+        if (1==2){
+            echo "Equal";
+        }
     }
     
     public function testDescription(){
