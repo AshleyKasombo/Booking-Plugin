@@ -24,6 +24,8 @@ mysql_build:
         - mysql -u root --password='mdl' --host=mysql MOODLE < ./MOODLE_dump.sql
             
 test:app:
+    only:
+        - master
     script:
         - phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
         - phpunit --version
