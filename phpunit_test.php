@@ -1,8 +1,11 @@
 <?php
 use PHPUnit\Framework\TestCase;
 use PHPUnit\DbUnit\TestCaseTrait;
+    echo "First Echo";
 
-echo "First Echo";
+if(1==2){
+    echo "First Echo 2 ";
+}
 
 class BookKingTest extends TestCase
 {
