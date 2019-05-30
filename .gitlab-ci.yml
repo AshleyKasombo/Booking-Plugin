@@ -27,4 +27,4 @@ test:app:
     script:
         - phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
         - phpunit --version
-    coverage: '/^\s*Lines:\s*\d+.\d+\%/'
+    coverage: '^\s*Lines:\s*\d+.\d+\%/'
