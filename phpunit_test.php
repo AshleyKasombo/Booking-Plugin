@@ -387,3 +387,4 @@ class slotsTest extends TestCase{
         $this->assertSame("1556980826", $hideArray[0]);
     }
 }
+?>
