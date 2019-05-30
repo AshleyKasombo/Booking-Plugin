@@ -1,11 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
 use PHPUnit\DbUnit\TestCaseTrait;
-    echo "First Echo";
-
-if(1==2){
-    echo "First Echo 2 ";
-}
 
 class BookKingTest extends TestCase
 {
@@ -53,18 +48,6 @@ class BookKingTest extends TestCase
         $idArray = $this->getIDArray();
         $this->assertSame('1', $idArray[0]);
         $this->assertSame('2', $idArray[1]);
-        
-        echo "Second Echo";
-        
-        if (1==2){
-            echo "Equal";
-        }
-        if($idArray[0]==$idArray[1]){
-            echo "Equal";
-        }
-        if (1==1){
-            echo "Equal";
-        }
     }
     
     public function testDescription(){
