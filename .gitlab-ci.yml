@@ -25,7 +25,7 @@ mysql_build:
             
 test:app:
     only:
-        - master
+        - v2.0
     script:
         - phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
         - phpunit --version
