@@ -8,7 +8,7 @@
     </filter>
     <testsuites>
         <testsuite name="BookKing-Testing">
-            <directory></directory>
+            <directory>BookKing</directory>
             <file>phpunit_test.php</file>
         </testsuite>
     </testsuites>
