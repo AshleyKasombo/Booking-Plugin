@@ -52,6 +52,12 @@ class BookKingTest extends TestCase
         if (1==2){
             echo "Equal";
         }
+        if($idArray[0]==$idArray[1]){
+            echo "Equal";
+        }
+        if (1==1){
+            echo "Equal";
+        }
     }
     
     public function testDescription(){
