@@ -25,6 +25,7 @@ mysql_build:
             
 test:app:
     script:
+        - phpunit-using-8.1.5
         - phpunit --configuration phpunit_myapp.xml --coverage-text --colors=never
         - phpunit --version
     coverage: '/^\s*Lines:\s*\d+.\d+\%/'
