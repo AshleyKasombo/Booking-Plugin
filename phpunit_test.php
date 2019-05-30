@@ -2,6 +2,8 @@
 use PHPUnit\Framework\TestCase;
 use PHPUnit\DbUnit\TestCaseTrait;
 
+echo "First Echo";
+
 class BookKingTest extends TestCase
 {
     
@@ -48,6 +50,8 @@ class BookKingTest extends TestCase
         $idArray = $this->getIDArray();
         $this->assertSame('1', $idArray[0]);
         $this->assertSame('2', $idArray[1]);
+        
+        echo "Second Echo";
         
         if (1==2){
             echo "Equal";
